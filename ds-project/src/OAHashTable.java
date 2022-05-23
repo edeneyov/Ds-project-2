@@ -35,7 +35,7 @@ public abstract class OAHashTable implements IHashTable {
 				table[j] = hte;
 				return;
 			}
-			else if (table[j].GetKey()==hte.GetKey()) {
+			else if (table[j].GetKey() == hte.GetKey()) {
 				throw new KeyAlreadyExistsException(hte);
 			}
 		}
@@ -49,14 +49,17 @@ public abstract class OAHashTable implements IHashTable {
 		for(int i=0;i<table.length;i++)
 		{
 			int j = Hash(key, i);
-			if (table[j].equals(null)) {
-				//table isn't full but key isn't in the hash seq. 
-				throw new KeyDoesntExistException(key);
-			}
-			else if (table[j].GetKey()==key) {
+//			if (table[j].equals(null)) {
+//				//table isn't full but key isn't in the hash seq. 
+//				
+//			}
+			if (table[j].GetKey()==key) {
 				// TODO assign a default hash table element to table[j]
+				table[j] = null;
+				return;
 			}
 		}
+		throw new KeyDoesntExistException(key);
 
 
 	}
