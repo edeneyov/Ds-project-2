@@ -1,20 +1,21 @@
 import java.util.Random;
 
 public class AQPHashTable extends OAHashTable {
-	ModHash hash;
-	int m;
+	private ModHash hash;
 	public AQPHashTable(int m, long p) {
 		super(m);
-		this.m = m;
 		hash = new ModHash(m, p);
 	}
 	
 	@Override
 	public int Hash(long x, int i) {
+		int ret;
 		if (i%2==0) {
-			return (hash.Hash(x)+i^2)% m;
+			ret = (int)((hash.Hash(x)+i^2));
 		}
-		return (hash.Hash(x)-i^2)% m;
+		else {
+			ret = (int)((hash.Hash(x)-(i^2)));	
+		}
+		return Math.abs(ret % this.m);
 	}
 }
-

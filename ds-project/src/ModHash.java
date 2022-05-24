@@ -1,15 +1,15 @@
 import java.util.concurrent.ThreadLocalRandom;
 public class ModHash {
-	private int a;
-	private int b;
+	private long a;
+	private long b;
 	private int m;
 	private long p;
 	
 	public ModHash(int m, long p) {
 	this.m = m;
 	this.p= p;
-	a = ThreadLocalRandom.current().nextInt(1, (int)p);
-	b = ThreadLocalRandom.current().nextInt(0, (int)p);
+	a = ThreadLocalRandom.current().nextLong(1, p);
+	b = ThreadLocalRandom.current().nextLong(0, p);
 	}
 	public static ModHash GetFunc(int m, long p){
 		ModHash func = new ModHash(m,p);
