@@ -16,6 +16,7 @@ public class AQPHashTable extends OAHashTable {
 		else {
 			ret = (int)((hash.Hash(x)-(i^2)));	
 		}
-		return floorMod(ret, this.m);
+		
+		return Math.floorMod(ret, this.m);
 	}
 }

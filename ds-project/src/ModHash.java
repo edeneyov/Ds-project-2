@@ -15,7 +15,12 @@ public class ModHash {
 		ModHash func = new ModHash(m,p);
 		return func;
 	}
-	
+	public long getA() {
+		return a;
+	}
+	public long getB() {
+		return b;
+	}
 	public int Hash(long key) {
 		int ret = (int) (((a*key+b) %p) %m);
 		return ret;

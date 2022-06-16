@@ -34,6 +34,10 @@ public abstract class OAHashTable implements IHashTable {
 		for(int i=0;i<table.length;i++)
 		{
 			int j = Hash(hte.GetKey(), i);
+			if (j< 0) {
+				int first = Hash(hte.GetKey(), 0);
+				System.out.println("key= "+hte.GetKey()+" i= "+i+" j= "+j+" first hash= "+first);
+			}
 			if ((table[j] == null || table[j].GetKey() < 0)){
 				//table[j].equals(null)) or table[j].equals(deleted)
 				if (place == -1) {
@@ -41,7 +45,6 @@ public abstract class OAHashTable implements IHashTable {
 				}
 				if(table[j] == null)
 					break;
-				
 			}
 			else if (table[j].GetKey() == hte.GetKey()) {
 				throw new KeyAlreadyExistsException(hte);
