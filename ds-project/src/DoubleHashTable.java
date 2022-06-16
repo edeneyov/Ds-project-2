@@ -13,9 +13,6 @@ public class DoubleHashTable extends OAHashTable {
 	public int Hash(long x, int i) {
 		long newI = (long)i;
 		int res = (int) ((hash1.Hash(x)+newI*(hash2.Hash(x)+1))%this.m);
-		if (res <0) {
-			System.out.println("a2= "+hash2.getA()+" b2= "+hash2.getB()+" a1 = "+hash1.getA()+" b1= "+hash1.getB());
-		}
 		return res;
 	}
 	
